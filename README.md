@@ -4,9 +4,11 @@ A premium, interactive Flutter dashboard application meticulously crafted with a
 
 ## 📱 Demonstration
 
-<p align="center">
-  <video src="https://github.com/ahalzakir/secure-fintech-dashboard/raw/main/video_demonstration.mp4" width="300" controls autoplay loop muted playsinline></video>
-</p>
+<!-- 
+  TODO: To add your video, edit this file on github.com and simply drag-and-drop 
+  your video_demonstration.mp4 right here! GitHub will automatically upload it 
+  and generate the correct embed code. 
+-->
 
 ## 🚀 Features & Engineering Highlights
 
