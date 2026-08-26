@@ -5,7 +5,7 @@ A premium, interactive Flutter dashboard application meticulously crafted with a
 ## 📱 Demonstration
 
 <p align="center">
-  <video src="video_demonstration.mp4" width="300" autoplay loop muted playsinline></video>
+  <video src="https://github.com/ahalzakir/secure-fintech-dashboard/raw/main/video_demonstration.mp4" width="300" controls autoplay loop muted playsinline></video>
 </p>
 
 ## 🚀 Features & Engineering Highlights
