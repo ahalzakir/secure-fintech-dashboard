@@ -7,9 +7,9 @@
 A premium, interactive Flutter dashboard application meticulously crafted with a focus on high-performance animations, strict security protocols, and scalable architecture. This project serves as a comprehensive demonstration of advanced Flutter development patterns.
 
 ## 📱 Demonstration
-
-(https://github.com/user-attachments/assets/7405e02b-6bd6-481c-8c87-5c5f6684c180)
-
+<p align="center">
+  <video src="(https://github.com/user-attachments/assets/7405e02b-6bd6-481c-8c87-5c5f6684c180)" width="300" autoplay loop muted playsinline></video>
+</p>
 ## 🚀 Features & Engineering Highlights
 
 *   **Premium UI/UX Design**: Strictly adheres to a sleek, dark-mode aesthetic with neon accents.
