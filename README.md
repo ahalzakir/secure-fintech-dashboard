@@ -1,12 +1,19 @@
-
 # Secure Fintech Dashboard
 
-A premium, interactive Flutter dashboard application meticulously crafted with a focus on fluid animations, strict security protocols, and scalable architecture. This project serves as a comprehensive demonstration of advanced Flutter development patterns.
+A premium, interactive Flutter dashboard application meticulously crafted with a focus on fluid animations, strict security protocols, and scalable architecture. This project serves as a comprehensive[...]
 
 ## 📱 Demonstration
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/fd7c70c6-412d-4c36-a9e7-1db0ec936230" width="300" autoplay loop muted playsinline></video>
+  <video
+    src="https://raw.githubusercontent.com/ahalzakir/secure-fintech-dashboard/main/video_demonstration.mp4"
+    width="320"
+    autoplay
+    loop
+    muted
+    playsinline
+    controls
+  ></video>
 </p>
 
 ## 🚀 Features & Engineering Highlights
@@ -25,7 +32,7 @@ The application implements explicit state handling across all key user interacti
 *   **Idle**: Full-width container with a neon cyan gradient displaying the statement due amount (`PAY BILL • $<amount>`) and bolt icon, ready for tap interactions.
 *   **Loading**: Morphs into a compact circular button (56×56) with a centered `CircularProgressIndicator` while the asynchronous transaction is processed, disabling duplicate taps.
 *   **Success**: Displays an emerald green gradient with a checkmark icon (`Icons.check_rounded`), holding the confirmation state for 2 seconds before reverting to idle.
-*   **Error & Retry**: If the payment fails or encounters an exception, the button transitions into a full-width red gradient container displaying a warning icon and the label `FAILED - TAP TO RETRY`. Tapping the button in this state immediately re-invokes the payment handler.
+*   **Error & Retry**: If the payment fails or encounters an exception, the button transitions into a full-width red gradient container displaying a warning icon and the label `FAILED - TAP TO RETRY`.[...]
 
 ## 🛠 Tech Stack
 
@@ -51,7 +58,7 @@ lib/
 
 Security is a primary focus of this application. It implements industry-standard practices for handling sensitive user data and authentication:
 
-*   **Biometric Authentication**: Utilizes native platform APIs via `local_auth` to seamlessly authenticate users before granting access to the dashboard. Includes a custom, web-compatible fallback dialog.
+*   **Biometric Authentication**: Utilizes native platform APIs via `local_auth` to seamlessly authenticate users before granting access to the dashboard. Includes a custom, web-compatible fallback di[...]
 *   **Encrypted Storage**: Sensitive keys and mock PIN data are securely stored using `flutter_secure_storage`, leveraging AES encryption on Android and Keychain on iOS.
 
 ## 🧪 Testing
