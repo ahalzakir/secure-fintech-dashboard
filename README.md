@@ -1,3 +1,4 @@
+
 # Secure Fintech Dashboard
 
 A premium, interactive Flutter dashboard application meticulously crafted with a focus on fluid animations, strict security protocols, and scalable architecture. This project serves as a comprehensive demonstration of advanced Flutter development patterns.
@@ -5,7 +6,7 @@ A premium, interactive Flutter dashboard application meticulously crafted with a
 ## 📱 Demonstration
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/7405e02b-6bd6-481c-8c87-5c5f6684c180" width="300" autoplay loop muted playsinline></video>
+  <video src="https://github.com/user-attachments/assets/fd7c70c6-412d-4c36-a9e7-1db0ec936230" width="300" autoplay loop muted playsinline></video>
 </p>
 
 ## 🚀 Features & Engineering Highlights
