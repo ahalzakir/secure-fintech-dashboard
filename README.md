@@ -4,17 +4,7 @@ A premium, interactive Flutter dashboard application meticulously crafted with a
 
 ## 📱 Demonstration
 
-<p align="center">
-  <video
-    src="https://github.com/user-attachments/assets/fd7c70c6-412d-4c36-a9e7-1db0ec936230"
-    width="320"
-    autoplay
-    loop
-    muted
-    playsinline
-    controls
-  ></video>
-</p>
+https://github.com/user-attachments/assets/fd7c70c6-412d-4c36-a9e7-1db0ec936230
 
 ## 🚀 Features & Engineering Highlights
 
