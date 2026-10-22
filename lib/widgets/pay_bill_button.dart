@@ -15,36 +15,46 @@ class PayBillButton extends StatefulWidget {
   State<PayBillButton> createState() => _PayBillButtonState();
 }
 
-enum ButtonState { idle, loading, success }
+enum ButtonState { idle, loading, success, error }
 
 class _PayBillButtonState extends State<PayBillButton> {
   ButtonState _state = ButtonState.idle;
 
   void _handleTap() async {
-    if (_state != ButtonState.idle) return;
+    if (_state != ButtonState.idle && _state != ButtonState.error) return;
 
     setState(() {
       _state = ButtonState.loading;
     });
 
-    final success = await widget.onPay();
+    try {
+      final success = await widget.onPay();
 
-    if (success && mounted) {
-      setState(() {
-        _state = ButtonState.success;
-      });
+      if (!mounted) return;
 
-      await Future.delayed(const Duration(seconds: 2));
-
-      if (mounted) {
+      if (success) {
         setState(() {
-          _state = ButtonState.idle;
+          _state = ButtonState.success;
+        });
+
+        await Future.delayed(const Duration(seconds: 2));
+
+        if (mounted) {
+          setState(() {
+            _state = ButtonState.idle;
+          });
+        }
+      } else {
+        setState(() {
+          _state = ButtonState.error;
         });
       }
-    } else if (mounted) {
-      setState(() {
-        _state = ButtonState.idle;
-      });
+    } catch (_) {
+      if (mounted) {
+        setState(() {
+          _state = ButtonState.error;
+        });
+      }
     }
   }
 
@@ -52,11 +62,27 @@ class _PayBillButtonState extends State<PayBillButton> {
   Widget build(BuildContext context) {
     final isIdle = _state == ButtonState.idle;
     final isSuccess = _state == ButtonState.success;
+    final isError = _state == ButtonState.error;
+    final isFullWidth = isIdle || isError;
 
     return LayoutBuilder(
       builder: (context, constraints) {
         final fullWidth = constraints.maxWidth;
-        final targetWidth = isIdle ? fullWidth : 56.0;
+        final targetWidth = isFullWidth ? fullWidth : 56.0;
+
+        List<Color> gradientColors;
+        Color shadowColor;
+
+        if (isSuccess) {
+          gradientColors = const [Color(0xFF00C853), Color(0xFF00E676)];
+          shadowColor = Colors.green;
+        } else if (isError) {
+          gradientColors = const [Color(0xFFD50000), Color(0xFFFF1744)];
+          shadowColor = Colors.redAccent;
+        } else {
+          gradientColors = const [AppTheme.accentNeon, Color(0xFF00B0FF)];
+          shadowColor = AppTheme.accentNeon;
+        }
 
         return Center(
           child: AnimatedContainer(
@@ -66,18 +92,15 @@ class _PayBillButtonState extends State<PayBillButton> {
             width: targetWidth,
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(isIdle ? 16 : 28),
+              borderRadius: BorderRadius.circular(isFullWidth ? 16 : 28),
               gradient: LinearGradient(
-                colors: isSuccess
-                    ? [const Color(0xFF00C853), const Color(0xFF00E676)]
-                    : [AppTheme.accentNeon, const Color(0xFF00B0FF)],
+                colors: gradientColors,
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: (isSuccess ? Colors.green : AppTheme.accentNeon)
-                      .withValues(alpha: 0.35),
+                  color: shadowColor.withValues(alpha: 0.35),
                   blurRadius: 18,
                   offset: const Offset(0, 6),
                 ),
@@ -86,8 +109,8 @@ class _PayBillButtonState extends State<PayBillButton> {
             child: Material(
               color: Colors.transparent,
               child: InkWell(
-                borderRadius: BorderRadius.circular(isIdle ? 16 : 28),
-                onTap: isIdle ? _handleTap : null,
+                borderRadius: BorderRadius.circular(isFullWidth ? 16 : 28),
+                onTap: isFullWidth ? _handleTap : null,
                 child: Center(
                   child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 250),
@@ -142,6 +165,28 @@ class _PayBillButtonState extends State<PayBillButton> {
           Icons.check_rounded,
           color: Colors.black,
           size: 28,
+        );
+      case ButtonState.error:
+        return const SingleChildScrollView(
+          key: ValueKey('error'),
+          scrollDirection: Axis.horizontal,
+          physics: NeverScrollableScrollPhysics(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.warning_amber_rounded, color: Colors.white, size: 20),
+              SizedBox(width: 8),
+              Text(
+                'FAILED - TAP TO RETRY',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900,
+                  fontSize: 14,
+                  letterSpacing: 1.2,
+                ),
+              ),
+            ],
+          ),
         );
     }
   }
