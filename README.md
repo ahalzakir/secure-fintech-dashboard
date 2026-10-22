@@ -6,7 +6,7 @@ A premium, interactive Flutter dashboard application meticulously crafted with a
 
 <p align="center">
   <video
-    src="https://raw.githubusercontent.com/ahalzakir/secure-fintech-dashboard/main/video_demonstration.mp4"
+    src="https://github.com/user-attachments/assets/fd7c70c6-412d-4c36-a9e7-1db0ec936230"
     width="320"
     autoplay
     loop
